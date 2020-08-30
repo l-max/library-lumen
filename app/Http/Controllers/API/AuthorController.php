@@ -12,6 +12,12 @@ class AuthorController extends Controller
     /**
      * Get all authors
      *
+     * @App\Http\Routes\Route(
+     *   method = {"GET"},
+     *   uri = "/author",
+     *   action = "AuthorController@index",
+     * )
+     *
      * @return array
      */
     public function index()
@@ -20,6 +26,13 @@ class AuthorController extends Controller
     }
 
     /**
+     *
+     * @App\Http\Routes\Route(
+     *   method = {"GET"},
+     *   uri = "/author/{authorId:[0-9]+}",
+     *   action = "AuthorController@show",
+     * )
+     *
      * @param $authorId
      *
      * @return array
@@ -30,6 +43,13 @@ class AuthorController extends Controller
     }
 
     /**
+     *
+     * @App\Http\Routes\Route(
+     *   method = {"POST"},
+     *   uri = "/author",
+     *   action = "AuthorController@store",
+     * )
+     *
      * @param Request $request
      *
      * @return array
@@ -55,6 +75,13 @@ class AuthorController extends Controller
     }
 
     /**
+     *
+     * @App\Http\Routes\Route(
+     *   method = {"PATCH"},
+     *   uri = "/author/{authorId:[0-9]+}",
+     *   action = "AuthorController@update",
+     * )
+     *
      * @param Request $request
      * @param string  $authorId
      *

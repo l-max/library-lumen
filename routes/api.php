@@ -11,32 +11,15 @@
 |
 */
 
-
 /** @var \Laravel\Lumen\Routing\Router $router */
-$router->group(['prefix' => '/api/v1/'], function () use ($router) {
-    $router->group(['prefix' => '/books'], function () use ($router) {
-        $router->get('/', 'BookController@index');
-        $router->post('/', 'BookController@store');
-        $router->get('/{bookId:[0-9]+}', 'BookController@show');
-        $router->patch('/{bookId:[0-9]+}', 'BookController@update');
-        $router->delete('/{bookId:[0-9]+}', 'BookController@destroy');
-    });
+// Create new collector
+$collector = new \App\Http\Routes\RouteCollector();
 
-    $router->get('/search', 'BookController@searchBooks');
+// Get routes from classes
+/** @var \App\Http\Routes\Route[] $routes */
+$routes = $collector->collect(__DIR__ . '/../app/Http/Controllers/API/', 'App\Http\Controllers\API\\');
 
-    $router->group(['prefix' => '/authors'], function () use ($router) {
-        $router->get('/', 'AuthorController@index');
-        $router->post('/', 'AuthorController@store');
-        $router->get('/{authorId:[0-9]+}', 'AuthorController@show');
-        $router->patch('/{authorId:[0-9]+}', 'AuthorController@update');
-        $router->delete('/{authorId:[0-9]+}', 'AuthorController@destroy');
-    });
-
-    $router->group(['prefix' => '/genres'], function () use ($router) {
-        $router->get('/', 'GenreController@index');
-        $router->post('/', 'GenreController@store');
-        $router->get('/{genreId:[0-9]+}', 'GenreController@show');
-        $router->patch('/{genreId:[0-9]+}', 'GenreController@update');
-        $router->delete('/{genreId:[0-9]+}', 'GenreController@destroy');
-    });
-});
+// Add routes
+foreach ($routes as $route) {
+    $router->addRoute($route->method, '/api/v1' . $route->uri, $route->action);
+}

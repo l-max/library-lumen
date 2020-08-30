@@ -31,6 +31,12 @@ class BookController extends Controller
     /**
      * Get all books
      *
+     * @App\Http\Routes\Route(
+     *   method = {"GET"},
+     *   uri = "/book",
+     *   action = "BookController@index",
+     * )
+     *
      * @return array
      */
     public function index()
@@ -39,6 +45,13 @@ class BookController extends Controller
     }
 
     /**
+     *
+     * @App\Http\Routes\Route(
+     *   method = {"GET"},
+     *   uri = "/book/{bookId:[0-9]+}",
+     *   action = "BookController@show",
+     * )
+     *
      * @param mixed $bookId
      *
      * @return array
@@ -49,6 +62,13 @@ class BookController extends Controller
     }
 
     /**
+     *
+     * @App\Http\Routes\Route(
+     *   method = {"POST"},
+     *   uri = "/book",
+     *   action = "BookController@store",
+     * )
+     *
      * @param Request $request
      *
      * @return array
@@ -77,6 +97,13 @@ class BookController extends Controller
     }
 
     /**
+     *
+     * @App\Http\Routes\Route(
+     *   method = {"PATCH"},
+     *   uri = "/book/{bookId:[0-9]+}",
+     *   action = "BookController@update",
+     * )
+     *
      * @param Request $request
      * @param string  $bookId
      *
@@ -110,6 +137,12 @@ class BookController extends Controller
 
     /**
      * Search books by genre name or author name
+     *
+     * @App\Http\Routes\Route(
+     *   method = {"GET"},
+     *   uri = "/search",
+     *   action = "BookController@search",
+     * )
      *
      * @param Request $request
      *

@@ -12,6 +12,12 @@ class GenreController extends Controller
     /**
      * Get all genres
      *
+     * @App\Http\Routes\Route(
+     *   method = {"GET"},
+     *   uri = "/genre",
+     *   action = "GenreController@index",
+     * )
+     *
      * @return array
      */
     public function index()
@@ -20,6 +26,13 @@ class GenreController extends Controller
     }
 
     /**
+     *
+     * @App\Http\Routes\Route(
+     *   method = {"GET"},
+     *   uri = "/genre/{genreId:[0-9]+}",
+     *   action = "GenreController@show",
+     * )
+     *
      * @param string $genreId
      *
      * @return array
@@ -30,6 +43,13 @@ class GenreController extends Controller
     }
 
     /**
+     *
+     * @App\Http\Routes\Route(
+     *   method = {"POST"},
+     *   uri = "/genre",
+     *   action = "GenreController@store",
+     * )
+     *
      * @param Request $request
      *
      * @return array
@@ -55,6 +75,13 @@ class GenreController extends Controller
     }
 
     /**
+     *
+     * @App\Http\Routes\Route(
+     *   method = {"PATCH"},
+     *   uri = "/genre/{genreId:[0-9]+}",
+     *   action = "GenreController@update",
+     * )
+     *
      * @param Request $request
      * @param string  $genreId
      *
